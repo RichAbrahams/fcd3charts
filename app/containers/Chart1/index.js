@@ -26,17 +26,6 @@ import * as selectors from './selectors';
 
 export class Chart1 extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  componentDidMount() {
-    this.props.drawChart();
-  }
-
-  resetChart() {
-    this.props.resetChart();
-  }
-  // <Reset {...this.props} />
-  // <Svg {...this.props} />
-  // <Canvas1 {...this.props} />
-  // <Canvas2 {...this.props} />
   render() {
     return (
       <div>

@@ -18,6 +18,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Chart1 from 'containers/Chart1/Loadable';
 import Chart2 from 'containers/Chart2/Loadable';
+import Chart3 from 'containers/Chart3/Loadable';
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Chart1} />
         <Route exact path="/chart2" component={Chart2} />
+        <Route exact path="/chart3" component={Chart3} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -64,10 +64,8 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'chart2', reducer });
-// const withSaga = injectSaga({ key: 'chart2', saga });
 
 export default compose(
   withReducer,
-  // withSaga,
   withConnect,
 )(Chart2);

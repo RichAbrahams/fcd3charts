@@ -1,18 +1,7 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the chart1 state domain
- */
+
 const selectChart1Domain = (state) => state.get('chart1');
-
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by Chart1
- */
 
 const selectStartDate = () => createSelector(
   selectChart1Domain,

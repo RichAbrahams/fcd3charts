@@ -13,7 +13,14 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectChart3 from './selectors';
+import Canvas1 from 'components/Chart3/Canvas1';
+import Svg from 'components/Chart3/Svg';
+import Slider from 'components/Chart3/Slider';
+import Tooltip from 'components/Chart3/Tooltip';
+import ChartWrapper from 'components/ChartWrapper';
+import MainWrapper from 'components/MainWrapper';
+import * as selectors from './selectors';
+import * as actions from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -25,22 +32,39 @@ export class Chart3 extends React.Component { // eslint-disable-line react/prefe
           <title>Chart3</title>
           <meta name="description" content="Description of Chart3" />
         </Helmet>
+        <MainWrapper>
+          <ChartWrapper {...this.props}>
+            <Svg {...this.props} />
+            <Canvas1 {...this.props} />
+            <Slider {...this.props} />
+          </ChartWrapper>
+        </MainWrapper>
       </div>
     );
   }
 }
 
 Chart3.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  chart3: makeSelectChart3(),
+  chartWidth: selectors.selectChartWidth(),
+  chartHeight: selectors.selectChartHeight(),
+  ctx1: selectors.selectCtx1(),
+  paddingRight: selectors.selectPaddingRight(),
+  paddingLeft: selectors.selectPaddingLeft(),
+  paddingBottom: selectors.selectPaddingBottom(),
+  paddingTop: selectors.selectPaddingTop(),
+  xScale: selectors.selectXScale(),
+  yScale: selectors.selectYScale(),
+  sliderValue: selectors.selectSliderValue(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    setCtx1: (payload) => dispatch(actions.setContext1(payload)),
+    drawChart: () => dispatch(actions.drawChart()),
+    updateSlider: (payload) => dispatch(actions.updateSlider(payload)),
   };
 }
 
