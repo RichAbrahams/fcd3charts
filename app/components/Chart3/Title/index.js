@@ -14,7 +14,7 @@ function Title(props) {
   const left = chartWidth / 2;
   return (
     <StyledText transform={`translate(${left}, ${top})`}>
-    Alleged Drug Use In Professional Cycling
+    Monthly Global Land-Surface Temperature 1753-2015
     </StyledText>
   );
 }

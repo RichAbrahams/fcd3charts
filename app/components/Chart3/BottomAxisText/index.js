@@ -14,7 +14,7 @@ function BottomAxisText(props) {
   const left = paddingLeft + ((chartWidth - (paddingLeft + paddingRight)) / 2);
   return (
     <StyledText transform={`translate(${left}, ${top})`}>
-    Seconds behind fastest time
+    Year
     </StyledText>
   );
 }

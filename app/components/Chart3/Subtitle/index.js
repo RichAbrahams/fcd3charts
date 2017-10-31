@@ -15,7 +15,7 @@ function Subtitle(props) {
   const text = '35 Fastest times up Alpe d\u0027Huez';
   return (
     <StyledText transform={`translate(${left}, ${top})`}>
-      {text}
+      Temperature reported as anomalies relative to the Jan 1951 - Dec 1980 average
     </StyledText>
   );
 }

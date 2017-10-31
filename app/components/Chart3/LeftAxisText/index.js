@@ -14,7 +14,7 @@ function LeftAxisText(props) {
   const left = paddingLeft - 50;
   return (
     <StyledText transform={`translate(${left},${top}) rotate(-90)`}>
-    Ranking
+    Month
     </StyledText>
   );
 }
