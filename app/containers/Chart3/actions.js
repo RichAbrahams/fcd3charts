@@ -8,7 +8,8 @@ import {
   SET_CONTEXT1,
   DRAW_CHART,
   UPDATE_SLIDER,
-
+  MOUSE_MOVE,
+  FILTERED_DATA,
 } from './constants';
 
 export function setContext1(payload) {
@@ -27,6 +28,20 @@ export function drawChart() {
 export function updateSlider(payload) {
   return {
     type: UPDATE_SLIDER,
+    payload,
+  };
+}
+
+export function mouseMove(payload) {
+  return {
+    type: MOUSE_MOVE,
+    payload,
+  };
+}
+
+export function filteredData(payload) {
+  return {
+    type: FILTERED_DATA,
     payload,
   };
 }

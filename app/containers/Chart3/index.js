@@ -37,6 +37,7 @@ export class Chart3 extends React.Component { // eslint-disable-line react/prefe
             <Svg {...this.props} />
             <Canvas1 {...this.props} />
             <Slider {...this.props} />
+            {this.props.toolTip && <Tooltip {...this.props} />}
           </ChartWrapper>
         </MainWrapper>
       </div>
@@ -58,6 +59,9 @@ const mapStateToProps = createStructuredSelector({
   xScale: selectors.selectXScale(),
   yScale: selectors.selectYScale(),
   sliderValue: selectors.selectSliderValue(),
+  data: selectors.selectData(),
+  toolTip: selectors.selectToolTip(),
+  mousePosition: selectors.selectMousePosition(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -65,6 +69,7 @@ function mapDispatchToProps(dispatch) {
     setCtx1: (payload) => dispatch(actions.setContext1(payload)),
     drawChart: () => dispatch(actions.drawChart()),
     updateSlider: (payload) => dispatch(actions.updateSlider(payload)),
+    mouseMove: (payload) => dispatch(actions.mouseMove(payload)),
   };
 }
 

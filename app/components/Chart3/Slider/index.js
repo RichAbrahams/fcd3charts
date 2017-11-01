@@ -14,16 +14,18 @@ function Slider(props) {
   return (
     <Wrapper>
       <SubWrapper marginRight={props.paddingRight}>
+      <Span>Filter Average Temp</Span>
         <Slide
           type="range"
           min="0"
           max="13"
           step="1"
+          list="tickmarks"
           value={props.sliderValue}
           onChange={(e) => props.updateSlider(e.target.value)}
         >
         </Slide>
-        <Span>{`${props.sliderValue} °C+`}</Span>
+        <Span>> {`${props.sliderValue} °C`}</Span>
       </SubWrapper>
     </Wrapper>
   );

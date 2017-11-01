@@ -9,6 +9,8 @@ import { scaleBand, scaleQuantile } from 'd3';
 import {
   SET_CONTEXT1,
   UPDATE_SLIDER,
+  MOUSE_MOVE,
+  FILTERED_DATA,
 } from './constants';
 import originalData from '../../data/data3';
 
@@ -86,11 +88,13 @@ const data = originalData.monthlyVariance.map((item) => {
     width: xScale.bandwidth(),
     height: yScale.bandwidth(),
     fill: colorScale(item.variance),
+    render: true,
   });
 });
 
 const initialState = fromJS({
   data,
+  filteredData: data,
   chartWidth,
   chartHeight,
   paddingTop,
@@ -102,14 +106,38 @@ const initialState = fromJS({
   ctx1: null,
   sliderValue: 0,
   monthNames,
+  toolTip: null,
+  mousePosition: null,
 });
 
 function chart3Reducer(state = initialState, action) {
   switch (action.type) {
     case SET_CONTEXT1:
       return state.set('ctx1', action.payload);
-    case UPDATE_SLIDER:
-      return state.set('sliderValue', action.payload);
+    case UPDATE_SLIDER: {
+      const sliderValue = action.payload;
+      const currentData = state.get('data');
+      const newData = currentData.map((item) => {
+        const render = item.get('temp') > sliderValue;
+        if (item.get('render') !== render) {
+          return item.set('render', render);
+        }
+        return item;
+      });
+      return state.merge({ data: newData, sliderValue });
+    }
+    case MOUSE_MOVE: {
+      if (!action.payload) {
+        return state.merge({ toolTip: null, mousePosition: null });
+      }
+      const arrayX = Math.floor(action.payload.x / xScale.bandwidth());
+      const arrayY = Math.floor(action.payload.y / yScale.bandwidth());
+      const { x, y } = action.payload;
+      const selectedIndex = arrayY + (yScale.domain().length * arrayX);
+      return state.merge({ toolTip: selectedIndex.toString(), mousePosition: { x, y } });
+    }
+    case FILTERED_DATA:
+      return state.set('filteredData', action.payload);
     default:
       return state;
   }

@@ -4,7 +4,7 @@ const selectChart3Domain = (state) => state.get('chart3');
 
 const selectData = () => createSelector(
   selectChart3Domain,
-  (substate) => substate.get('data').toJS()
+  (substate) => substate.get('data')
 );
 
 const selectChartWidth = () => createSelector(
@@ -58,6 +58,17 @@ const selectSliderValue = () => createSelector(
   (substate) => substate.get('sliderValue')
 );
 
+const selectToolTip = () => createSelector(
+  selectChart3Domain,
+  (substate) => substate.get('toolTip')
+);
+
+
+const selectMousePosition = () => createSelector(
+  selectChart3Domain,
+  (substate) => substate.get('mousePosition')
+);
+
 export {
   selectData,
   selectChartWidth,
@@ -70,4 +81,6 @@ export {
   selectXScale,
   selectYScale,
   selectSliderValue,
+  selectToolTip,
+  selectMousePosition,
 };

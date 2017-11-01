@@ -16,10 +16,13 @@ function clearCanvas(paddingTop, paddingLeft, width, height, ctx) {
   ctx.fillRect(paddingTop, paddingLeft, width, height);
 }
 
-function renderChart(data, chartWidth, chartHeight, paddingTop, paddingBottom, ctx, frame, totalFrames) {
-  for (let i = 0; i < data.length; i += 1) {
-    ctx.fillStyle = data[i].fill;
-    ctx.fillRect(data[i].x, data[i].y, data[i].width, data[i].height);
+function renderChart(data, chartWidth, chartHeight, paddingTop, paddingBottom, ctx, frame) {
+  for (let i = 0; i < data.size; i += 1) {
+    const item = data.get(i);
+    if (item.get('render')) {
+      ctx.fillStyle = item.get('fill');
+      ctx.fillRect(item.get('x'), item.get('y'), item.get('width'), item.get('height'));
+    }
   }
 }
 
@@ -42,11 +45,6 @@ function animateDraw(data, chartWidth, chartHeight, paddingTop, paddingBottom, p
   draw();
 }
 
-function filterData(data, sliderValue) {
-  const filteredData = data.filter((item) => item.temp > sliderValue);
-  return filteredData;
-}
-
 function* drawChart() {
   cancelAnimationFrame(draw);
   const paddingTop = yield select(selectors.selectPaddingTop());
@@ -55,11 +53,9 @@ function* drawChart() {
   const paddingRight = yield select(selectors.selectPaddingRight());
   const ctx = yield select(selectors.selectCtx1());
   const data = yield select(selectors.selectData());
-  const sliderValue = yield select(selectors.selectSliderValue());
   const chartWidth = ctx.canvas.width;
   const chartHeight = ctx.canvas.height;
-  const filteredData = filterData(data, sliderValue);
-  yield animateDraw(filteredData, chartWidth, chartHeight, paddingTop, paddingBottom, paddingLeft, paddingRight, ctx);
+  yield animateDraw(data, chartWidth, chartHeight, paddingTop, paddingBottom, paddingLeft, paddingRight, ctx);
 }
 
 export default function* watcher() {

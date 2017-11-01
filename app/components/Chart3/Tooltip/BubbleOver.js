@@ -2,26 +2,26 @@ import styled from 'styled-components';
 
 const BubbleOver = styled.div`
 position: relative;
-width: 190px;
-height: 135px;
-padding: 8px;
+width: 110px;
+height: 65px;
+padding: 10px;
 background: #333;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
   color: white;
   font-size: 0.8rem;
   :after {
     content: '';
     position: absolute;
     border-style: solid;
-    border-width: 14px 17px 0;
+    border-width: 15px 16px 0;
     border-color: #333 transparent;
     display: block;
     width: 0;
-    z-index: 1;
-    bottom: -14px;
-    left: 86px;
+    z-index: 2;
+    bottom: -15px;
+    left: 49px;
   }
   & ul {
     list-style-type: none;
