@@ -16,3 +16,4 @@ export const SET_FILTERED_DATA = 'SET_FILTERED_DATA';
 export const RESET_DRAG = 'app/Chart1/RESET_DRAG';
 export const RESET_CHART = 'app/Chart1/RESET_CHART';
 export const SET_SVG = 'app/Chart1/SET_SVG';
+export const STOP_DRAWING = 'app/Chart1/STOP_DRAWING';

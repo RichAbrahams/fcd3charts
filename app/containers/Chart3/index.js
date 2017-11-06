@@ -25,6 +25,11 @@ import reducer from './reducer';
 import saga from './saga';
 
 export class Chart3 extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentWillUnmount() {
+    this.props.stopDrawing();
+  }
+  
   render() {
     return (
       <div>
@@ -70,6 +75,7 @@ function mapDispatchToProps(dispatch) {
     drawChart: () => dispatch(actions.drawChart()),
     updateSlider: (payload) => dispatch(actions.updateSlider(payload)),
     mouseMove: (payload) => dispatch(actions.mouseMove(payload)),
+    stopDrawing: () => dispatch(actions.stopDrawing()),
   };
 }
 

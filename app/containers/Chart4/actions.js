@@ -5,11 +5,28 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  UPDATE_NODES,
+  LOAD_CANVAS,
+  UPDATE_SELECTED,
 } from './constants';
 
-export function defaultAction() {
+export function updateNodes(payload) {
   return {
-    type: DEFAULT_ACTION,
+    type: UPDATE_NODES,
+    payload,
+  };
+}
+
+export function loadCanvas(payload) {
+  return {
+    type: LOAD_CANVAS,
+    payload,
+  };
+}
+
+export function updateSelected(payload) {
+  return {
+    type: UPDATE_SELECTED,
+    payload,
   };
 }

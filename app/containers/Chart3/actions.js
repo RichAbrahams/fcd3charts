@@ -10,6 +10,7 @@ import {
   UPDATE_SLIDER,
   MOUSE_MOVE,
   FILTERED_DATA,
+  STOP_DRAWING,
 } from './constants';
 
 export function setContext1(payload) {
@@ -43,5 +44,11 @@ export function filteredData(payload) {
   return {
     type: FILTERED_DATA,
     payload,
+  };
+}
+
+export function stopDrawing() {
+  return {
+    type: STOP_DRAWING,
   };
 }

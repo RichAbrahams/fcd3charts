@@ -10,14 +10,21 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectChart4 from './selectors';
+import ChartWrapper from 'components/ChartWrapper';
+import MainWrapper from 'components/MainWrapper';
+import Tooltip from 'components/Chart4/Tooltip';
+import Canvas from 'components/Chart4/Canvas';
+
+import * as selectors from './selectors';
+import * as actions from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
 export class Chart4 extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+
   render() {
     return (
       <div>
@@ -25,22 +32,33 @@ export class Chart4 extends React.Component { // eslint-disable-line react/prefe
           <title>Chart4</title>
           <meta name="description" content="Description of Chart4" />
         </Helmet>
+        <MainWrapper>
+          <ChartWrapper>
+            <Canvas {...this.props} handleMouseMove={this.handleMouseMove} />
+            {this.props.selected && <Tooltip {...this.props} />}
+          </ChartWrapper>
+        </MainWrapper>
       </div>
     );
   }
 }
 
 Chart4.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+
 };
 
 const mapStateToProps = createStructuredSelector({
-  chart4: makeSelectChart4(),
+  width: selectors.width(),
+  height: selectors.height(),
+  nodes: selectors.nodes(),
+  radius: selectors.radius(),
+  selected: selectors.selected(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    loadCanvas: (payload) => dispatch(actions.loadCanvas(payload)),
+    updateSelected: (payload) => dispatch(actions.updateSelected(payload)),
   };
 }
 

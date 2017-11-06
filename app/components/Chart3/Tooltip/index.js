@@ -41,10 +41,6 @@ function Tooltip(props) {
   return content();
 }
 
-// bottom: ${props => (props.chartHeight - (props.y - 20))}px;
-// left:${props => props.x - 73}px;
-
-
 Tooltip.propTypes = {
 
 };

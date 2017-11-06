@@ -17,6 +17,7 @@ import {
   RESET_DRAG,
   RESET_CHART,
   SET_SVG,
+  STOP_DRAWING,
 } from './constants';
 
 export function setContext1(payload) {
@@ -97,5 +98,11 @@ export function resetDrag() {
 export function resetChart() {
   return {
     type: RESET_CHART,
+  };
+}
+
+export function stopDrawing() {
+  return {
+    type: STOP_DRAWING,
   };
 }

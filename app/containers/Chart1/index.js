@@ -26,6 +26,11 @@ import * as selectors from './selectors';
 
 export class Chart1 extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
+  componentWillUnmount() {
+    this.props.resetChart();
+    this.props.stopDrawing();
+  }
+
   render() {
     return (
       <div>
@@ -67,6 +72,7 @@ function mapDispatchToProps(dispatch) {
     mouseDrag: (payload) => dispatch(actions.mouseDrag(payload)),
     mouseMove: (payload) => dispatch(actions.mouseMove(payload)),
     resetChart: () => dispatch(actions.resetChart()),
+    stopDrawing: () => dispatch(actions.stopDrawing()),
   };
 }
 

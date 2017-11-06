@@ -1,0 +1,260 @@
+[
+  {
+    "country": "Lithuania",
+    "code": "lt",
+    "index": 0,
+    "linkTo": [34, 36, 31, 3]
+  },
+  {
+    "country": "Slovenia",
+    "code": "si",
+    "index": 1,
+    "linkTo": [28, 39, 35, 27]
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "code": "ba",
+    "index": 2,
+    "linkTo": [39, 40, 12]
+  },
+  {
+    "country": "Russian Federation",
+    "code": "ru",
+    "index": 3,
+    "linkTo": [11, 14, 26, 34, 31, 36, 13]
+  },
+  {
+    "country": "Spain",
+    "code": "es",
+    "index": 4,
+    "linkTo": [9, 20, 25]
+  },
+  {
+    "country": "Netherlands",
+    "code": "nl",
+    "index": 5,
+    "linkTo": [29, 22]
+  },
+  {
+    "country": "Monaco",
+    "code": "mc",
+    "index": 6,
+    "linkTo": [9]
+  },
+  {
+    "country": "Albania",
+    "code": "al",
+    "index": 7,
+    "linkTo": [12, 40, 33, 38]
+  },
+  {
+    "country": "San Marino",
+    "code": "sm",
+    "index": 8,
+    "linkTo": [27]
+  },
+  {
+    "country": "France",
+    "code": "fr",
+    "index": 9,
+    "linkTo": [20, 22, 29, 27, 19, 24]
+  },
+  {
+    "country": "Slovakia",
+    "code": "sk",
+    "index": 10,
+    "linkTo": [31, 13, 35, 28, 21]
+  },
+  {
+    "country": "Norway",
+    "code": "no",
+    "index": 11,
+    "linkTo": [15, 14]
+  },
+  {
+    "country": "Montenegro",
+    "code": "me",
+    "index": 12,
+    "linkTo": [39, 2, 40]
+  },
+  {
+    "country": "Ukraine",
+    "code": "ua",
+    "index": 13,
+    "linkTo": [31, 35, 17, 23, 36]
+  },
+  {
+    "country": "Finland",
+    "code": "fi",
+    "index": 14,
+    "linkTo": [15]
+  },
+  {
+    "country": "Sweden",
+    "code": "se",
+    "index": 15,
+    "linkTo": []
+  },
+  {
+    "country": "Bulgaria",
+    "code": "bg",
+    "index": 16,
+    "linkTo": [17, 40, 33, 38]
+  },
+  {
+    "country": "Romania",
+    "code": "ro",
+    "index": 17,
+    "linkTo": [35, 40, 23]
+  },
+  {
+    "country": "Liechtenstein",
+    "code": "li",
+    "index": 18,
+    "linkTo": [28, 24]
+  },
+  {
+    "country": "Luxembourg",
+    "code": "lu",
+    "index": 19,
+    "linkTo": [22, 29]
+  },
+  {
+    "country": "Andorra",
+    "code": "ad",
+    "index": 20,
+    "linkTo": []
+  },
+  {
+    "country": "Czech Republic",
+    "code": "cz",
+    "index": 21,
+    "linkTo": [28, 29, 31]
+  },
+  {
+    "country": "Belgium",
+    "code": "be",
+    "index": 22,
+    "linkTo": [29]
+  },
+  {
+    "country": "Moldova",
+    "code": "md",
+    "index": 23,
+    "linkTo": []
+  },
+  {
+    "country": "Switzerland",
+    "code": "ch",
+    "index": 24,
+    "linkTo": [28, 27, 29]
+  },
+  {
+    "country": "Portugal",
+    "code": "pt",
+    "index": 25,
+    "linkTo": []
+  },
+  {
+    "country": "Estonia",
+    "code": "ee",
+    "index": 26,
+    "linkTo": [34]
+  },
+  {
+    "country": "Italy",
+    "code": "it",
+    "index": 27,
+    "linkTo": [28]
+  },
+  {
+    "country": "Austria",
+    "code": "at",
+    "index": 28,
+    "linkTo": [29, 35]
+  },
+  {
+    "country": "Germany",
+    "code": "de",
+    "index": 29,
+    "linkTo": [30, 31]
+  },
+  {
+    "country": "Denmark",
+    "code": "dk",
+    "index": 30,
+    "linkTo": []
+  },
+  {
+    "country": "Poland",
+    "code": "pl",
+    "index": 31,
+    "linkTo": [35, 36]
+  },
+  {
+    "country": "Ireland",
+    "code": "ie",
+    "index": 32,
+    "linkTo": [37]
+  },
+  {
+    "country": "Macedonia",
+    "code": "mk",
+    "index": 33,
+    "linkTo": [38, 40]
+  },
+  {
+    "country": "Latvia",
+    "code": "lv",
+    "index": 34,
+    "linkTo": [36]
+  },
+  {
+    "country": "Hungary",
+    "code": "hu",
+    "index": 35,
+    "linkTo": [39,40]
+  },
+  {
+    "country": "Belarus",
+    "code": "by",
+    "index": 36,
+    "linkTo": []
+  },
+  {
+    "country": "United Kingdom",
+    "code": "gb",
+    "index": 37,
+    "linkTo": []
+  },
+  {
+    "country": "Greece",
+    "code": "gr",
+    "index": 38,
+    "linkTo": []
+  },
+  {
+    "country": "Croatia",
+    "code": "hr",
+    "index": 39,
+    "linkTo": [40]
+  },
+  {
+    "country": "Serbia",
+    "code": "rs",
+    "index": 40,
+    "linkTo": []
+  },
+  {
+    "country": "Iceland",
+    "code": "is",
+    "index": 41,
+    "linkTo": []
+  },
+  {
+    "country": "Malta",
+    "code": "mt",
+    "index": 42,
+    "linkTo": []
+  }
+]

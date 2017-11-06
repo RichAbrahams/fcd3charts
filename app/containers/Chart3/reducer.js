@@ -130,14 +130,12 @@ function chart3Reducer(state = initialState, action) {
       if (!action.payload) {
         return state.merge({ toolTip: null, mousePosition: null });
       }
+      const { x, y } = action.payload;
       const arrayX = Math.floor(action.payload.x / xScale.bandwidth());
       const arrayY = Math.floor(action.payload.y / yScale.bandwidth());
-      const { x, y } = action.payload;
       const selectedIndex = arrayY + (yScale.domain().length * arrayX);
       return state.merge({ toolTip: selectedIndex.toString(), mousePosition: { x, y } });
     }
-    case FILTERED_DATA:
-      return state.set('filteredData', action.payload);
     default:
       return state;
   }

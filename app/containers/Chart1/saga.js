@@ -7,6 +7,7 @@ import {
   MOUSE_DRAG,
   MOUSE_UP,
   RESET_CHART,
+  STOP_DRAWING,
 } from './constants';
 import * as actions from './actions';
 import * as selectors from './selectors';
@@ -268,9 +269,14 @@ function* drawBrush() {
   ctx.fillRect(x, paddingTop, width, canvasHeight - (paddingBottom + paddingTop));
 }
 
+function* stopDrawing() {
+  yield cancelAnimationFrame(draw);
+}
+
 export default function* watcher() {
   yield fork(takeLatest, DRAW_CHART, drawChart);
   yield fork(takeLatest, MOUSE_DRAG, drawBrush);
   yield fork(takeLatest, MOUSE_UP, filterDateRange);
   yield fork(takeLatest, RESET_CHART, drawChart);
+  yield fork(takeLatest, STOP_DRAWING, stopDrawing);
 }

@@ -4,6 +4,7 @@ import { fork, call, put, select } from 'redux-saga/effects';
 import {
   DRAW_CHART,
   UPDATE_SLIDER,
+  STOP_DRAWING,
 } from './constants';
 import * as actions from './actions';
 import * as selectors from './selectors';
@@ -21,7 +22,7 @@ function renderChart(data, chartWidth, chartHeight, paddingTop, paddingBottom, c
     const item = data.get(i);
     if (item.get('render')) {
       ctx.fillStyle = item.get('fill');
-      ctx.fillRect(item.get('x'), item.get('y'), item.get('width'), item.get('height'));
+      ctx.fillRect(Math.floor(item.get('x')), item.get('y'), Math.ceil(item.get('width')), item.get('height'));
     }
   }
 }
@@ -58,7 +59,12 @@ function* drawChart() {
   yield animateDraw(data, chartWidth, chartHeight, paddingTop, paddingBottom, paddingLeft, paddingRight, ctx);
 }
 
+function* stopDrawing() {
+  yield cancelAnimationFrame(draw);
+}
+
 export default function* watcher() {
   yield fork(takeLatest, DRAW_CHART, drawChart);
   yield fork(takeLatest, UPDATE_SLIDER, drawChart);
+  yield fork(takeLatest, STOP_DRAWING, stopDrawing);
 }
