@@ -10,7 +10,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Circle from './styledCircle';
 import G from './G';
 
-function Plots(props) {
+function Paths(props) {
   const { data, xScale, yScale, paddingLeft, paddingTop, toggleTooltip } = props;
   const plot = data.map((item, index) =>
     (<Circle
@@ -44,8 +44,8 @@ function Plots(props) {
   );
 }
 
-Plots.propTypes = {
+Paths.propTypes = {
 
 };
 
-export default Plots;
+export default Paths;

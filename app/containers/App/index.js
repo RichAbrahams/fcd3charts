@@ -20,7 +20,7 @@ import Chart1 from 'containers/Chart1/Loadable';
 import Chart2 from 'containers/Chart2/Loadable';
 import Chart3 from 'containers/Chart3/Loadable';
 import Chart4 from 'containers/Chart4/Loadable';
-
+import Chart5 from 'containers/Chart5/Loadable';
 import NavBar from 'containers/NavBar';
 
 export default function App() {
@@ -32,6 +32,7 @@ export default function App() {
         <Route exact path="/chart2" component={Chart2} />
         <Route exact path="/chart3" component={Chart3} />
         <Route exact path="/chart4" component={Chart4} />
+        <Route exact path="/chart5" component={Chart5} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
