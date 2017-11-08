@@ -15,6 +15,9 @@ class Wrapper extends React.Component { // eslint-disable-line react/prefer-stat
 
   handleWheel(e) {
     e.preventDefault();
+    if (this.props.dragging) {
+      this.props.toggleDragging();
+    }
     this.props.adjustScale(e.nativeEvent.deltaY);
   }
 

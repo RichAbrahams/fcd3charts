@@ -7,6 +7,7 @@
 import { fromJS } from 'immutable';
 import { geoMercator } from 'd3-geo';
 import { feature } from 'topojson-client';
+import { scaleLinear } from 'd3';
 import topoMap from '../../data/data5/world-countries-sans-antarctica.json';
 import meteorites from '../../data/data5/meteorite-strike-data.json';
 import {
@@ -21,6 +22,16 @@ const height = 500;
 const projection = () => geoMercator()
     .scale(159)
     .translate([width / 2, height / 2]);
+
+
+const mass = meteorites.features.map((item) => parseInt(item.properties.mass, 10))
+  .filter((item) => !isNaN(item));
+
+const max = Math.max(...mass);
+const min = Math.min(...mass);
+const radialScale = scaleLinear()
+  .domain([min, max])
+  .range([1, 30]);
 
 const initialState = fromJS({
   countries,
@@ -38,6 +49,7 @@ const initialState = fromJS({
   yLast: 0,
   xImage: 0,
   yImage: 0,
+  radialScale,
 });
 
 function chart5Reducer(state = initialState, action) {
@@ -47,12 +59,13 @@ function chart5Reducer(state = initialState, action) {
       const translateX = state.get('translateX');
       const translateY = state.get('translateY');
       const scalechange = action.payload <= 0 ? 1.25 : 0.8;
-      let newScale = oldScale * scalechange;
-      newScale = newScale < 1 ? 1 : newScale;
-      newScale = newScale > 10 ? 10 : newScale;
-      const newTranslateX = translateX * scalechange;
-      const newTranslateY = translateY * scalechange;
-      return state.merge({ scale: newScale, translateX: newTranslateX, translateY: newTranslateY });
+      const newScale = oldScale * scalechange;
+      if (newScale > 1 && newScale < 10) {
+        const newTranslateX = translateX * scalechange;
+        const newTranslateY = translateY * scalechange;
+        return state.merge({ scale: newScale, translateX: newTranslateX, translateY: newTranslateY });
+      }
+      return state;
     }
     case TOGGLE_DRAGGING: {
       if (action.payload) {

@@ -59,6 +59,11 @@ const translateY = () => createSelector(
   (substate) => substate.get('translateY')
 );
 
+const radialScale = () => createSelector(
+  selectChart5Domain,
+(substate) => substate.get('radialScale')
+);
+
 export {
   countries,
   width,
@@ -69,4 +74,5 @@ export {
   dragging,
   translateX,
   translateY,
+  radialScale,
 };

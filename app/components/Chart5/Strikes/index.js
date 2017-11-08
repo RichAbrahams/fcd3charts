@@ -22,7 +22,7 @@ class Strikes extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   buildStrikes() {
-    const { meteorites, width, height } = this.props;
+    const { meteorites, width, height, radialScale } = this.props;
     const location = (strike) => projection(width, height)(strike.geometry.coordinates);
     const strikes = meteorites.map((item) => {
       if (item.geometry === null) {
@@ -31,8 +31,10 @@ class Strikes extends React.Component { // eslint-disable-line react/prefer-stat
       return (<Circle
         cx={location(item)[0]}
         cy={location(item)[1]}
-        r={1}
-        fill="#E91E63"
+        r={radialScale(item.properties.mass)}
+        fill="rgba(233, 30, 99, 0.5)"
+        stroke="rgba(68,68,68, 0.5)"
+        stroke-width="1"
         key={shortID.generate()}
       />);
     });

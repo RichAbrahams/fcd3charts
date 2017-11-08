@@ -47,6 +47,7 @@ const mapStateToProps = createStructuredSelector({
   dragging: selectors.dragging(),
   translateX: selectors.translateX(),
   translateY: selectors.translateY(),
+  radialScale: selectors.radialScale(),
 });
 
 function mapDispatchToProps(dispatch) {
