@@ -5,11 +5,12 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledText from './StyledText';
 
 
 function Subtitle(props) {
-  const { chartHeight, chartWidth, paddingLeft, paddingRight, paddingBottom, paddingTop } = props;
+  const { chartWidth, paddingTop } = props;
   const top = paddingTop - 50;
   const left = chartWidth / 2;
   return (
@@ -20,7 +21,8 @@ function Subtitle(props) {
 }
 
 Subtitle.propTypes = {
-
+  chartWidth: PropTypes.number,
+  paddingTop: PropTypes.number,
 };
 
 export default Subtitle;

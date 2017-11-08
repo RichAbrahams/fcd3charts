@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';
 
 class Svg extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -30,7 +30,9 @@ class Svg extends React.Component { // eslint-disable-line react/prefer-stateles
 }
 
 Svg.propTypes = {
-
+  canvasWidth: PropTypes.number,
+  canvasHeight: PropTypes.number,
+  setSvg: PropTypes.func,
 };
 
 export default Svg;

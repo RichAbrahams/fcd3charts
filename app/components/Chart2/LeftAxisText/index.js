@@ -5,11 +5,12 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledText from './StyledText';
 
 
 function LeftAxisText(props) {
-  const { svgHeight, svgWidth, paddingLeft, paddingRight, paddingTop, paddingBottom } = props;
+  const { svgHeight, paddingLeft, paddingTop, paddingBottom } = props;
   const top = paddingTop + ((svgHeight - (paddingTop + paddingBottom)) / 2);
   const left = paddingLeft - 50;
   return (
@@ -20,7 +21,10 @@ function LeftAxisText(props) {
 }
 
 LeftAxisText.propTypes = {
-
+  svgHeight: PropTypes.number,
+  paddingLeft: PropTypes.number,
+  paddingTop: PropTypes.number,
+  paddingBottom: PropTypes.number,
 };
 
 export default LeftAxisText;

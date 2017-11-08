@@ -44,7 +44,7 @@ export class Chart4 extends React.Component { // eslint-disable-line react/prefe
 }
 
 Chart4.propTypes = {
-
+  selected: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({

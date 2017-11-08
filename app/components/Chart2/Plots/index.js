@@ -6,6 +6,7 @@
 
 import React from 'react';
 import shortId from 'shortid';
+import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Circle from './styledCircle';
 import G from './G';
@@ -45,7 +46,12 @@ function Paths(props) {
 }
 
 Paths.propTypes = {
-
+  data: PropTypes.array,
+  xScale: PropTypes.func,
+  yScale: PropTypes.func,
+  paddingLeft: PropTypes.number,
+  paddingTop: PropTypes.number,
+  toggleTooltip: PropTypes.func,
 };
 
 export default Paths;

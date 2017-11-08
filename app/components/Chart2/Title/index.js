@@ -5,11 +5,12 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledText from './StyledText';
 
 
 function Title(props) {
-  const { svgHeight, svgWidth, paddingLeft, paddingRight, paddingBottom, paddingTop } = props;
+  const { svgWidth, paddingTop } = props;
   const top = paddingTop - 70;
   const left = svgWidth / 2;
   return (
@@ -20,7 +21,8 @@ function Title(props) {
 }
 
 Title.propTypes = {
-
+  svgWidth: PropTypes.number,
+  paddingTop: PropTypes.number,
 };
 
 export default Title;

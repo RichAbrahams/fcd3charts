@@ -1,4 +1,4 @@
-import { takeLatest, eventChannel } from 'redux-saga';
+import { eventChannel } from 'redux-saga';
 import { fork, call, put, select, take } from 'redux-saga/effects';
 import * as d3 from 'd3';
 import {
@@ -19,7 +19,6 @@ function* initSimulation() {
   flagPositions = yield select(selectors.flagPositions());
   flags = yield select(selectors.flagImage());
   return eventChannel((emitter) => {
-
     const simulation = d3.forceSimulation()
       .force('link', d3.forceLink().id((d) => d.index).distance(1))
       .force('collide', d3.forceCollide(50))
@@ -38,12 +37,12 @@ function* initSimulation() {
       emitter({ type: NODES_RECEIVED, data: simulation.nodes() });
     }
 
-    return () => console.log('channel off');
+    return () => console.log('channel off'); // eslint-disable-line no-console
   });
 }
 
 function* d3update(channel) {
-  while (true) {
+  while (true) { // eslint-disable-line no-constant-condition
     const action = yield take(channel);
     if (action.type === NODES_RECEIVED) {
       yield put(actions.updateNodes(action.data));

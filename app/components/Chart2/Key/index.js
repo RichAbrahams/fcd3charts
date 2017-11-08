@@ -7,7 +7,7 @@
 import React from 'react';
 import Circle from './Circle';
 
-function Key(props) {
+function Key() {
   return (
     <g>
       <Circle

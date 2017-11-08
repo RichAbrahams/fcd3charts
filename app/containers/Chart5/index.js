@@ -5,12 +5,11 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import Svg from 'components/Chart5/Svg';
+import Wrapper from 'components/Chart5/Wrapper';
 import ChartWrapper from 'components/ChartWrapper';
 import MainWrapper from 'components/MainWrapper';
 import injectSaga from 'utils/injectSaga';
@@ -30,7 +29,7 @@ export class Chart5 extends React.Component { // eslint-disable-line react/prefe
         </Helmet>
         <MainWrapper>
           <ChartWrapper>
-            <Svg {...this.props} />
+            <Wrapper {...this.props} />
           </ChartWrapper>
         </MainWrapper>
       </div>
@@ -38,21 +37,23 @@ export class Chart5 extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-Chart5.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
 const mapStateToProps = createStructuredSelector({
   countries: selectors.countries(),
   width: selectors.width(),
   height: selectors.height(),
   meteorites: selectors.meteorites(),
   projection: selectors.projection(),
+  scale: selectors.scale(),
+  dragging: selectors.dragging(),
+  translateX: selectors.translateX(),
+  translateY: selectors.translateY(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    adjustScale: (payload) => dispatch(actions.adjustScale(payload)),
+    toggleDragging: (payload) => dispatch(actions.toggleDragging(payload)),
+    drag: (payload) => dispatch(actions.debouncedDrag(payload)),
   };
 }
 

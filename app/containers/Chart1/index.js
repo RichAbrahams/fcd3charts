@@ -51,7 +51,8 @@ export class Chart1 extends React.Component { // eslint-disable-line react/prefe
   }
 }
 Chart1.propTypes = {
-
+  resetChart: PropTypes.func,
+  stopDrawing: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({

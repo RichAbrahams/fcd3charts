@@ -23,18 +23,16 @@ function Tooltip(props) {
       <li>temperature: {temp}</li>
       <li>variance: {variance}</li>
     </ul>);
-  const content = () => {
-    return (<BubbleOverWrapper
-      x={selected.get('x')}
-      y={mousePosition.get('y')}
-      chartHeight={chartHeight - paddingTop}
-      style={{ bottom, left }}
-    >
-      <BubbleOver>
-        {details()}
-      </BubbleOver>
-    </BubbleOverWrapper>);
-  };
+  const content = () => (<BubbleOverWrapper
+    x={selected.get('x')}
+    y={mousePosition.get('y')}
+    chartHeight={chartHeight - paddingTop}
+    style={{ bottom, left }}
+  >
+    <BubbleOver>
+      {details()}
+    </BubbleOver>
+  </BubbleOverWrapper>);
   if (!selected.get('render')) {
     return null;
   }

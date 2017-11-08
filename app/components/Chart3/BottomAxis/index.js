@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { axisBottom, select } from 'd3';
 
 
@@ -34,7 +35,10 @@ class BottomAxis extends React.Component { // eslint-disable-line react/prefer-s
 }
 
 BottomAxis.propTypes = {
-
+  xScale: PropTypes.func,
+  paddingLeft: PropTypes.number,
+  chartHeight: PropTypes.number,
+  paddingBottom: PropTypes.number,
 };
 
 export default BottomAxis;

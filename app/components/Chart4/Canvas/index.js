@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Canvas extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -35,21 +36,26 @@ class Canvas extends React.Component { // eslint-disable-line react/prefer-state
 
   render() {
     return (
-        <canvas
-          width={this.props.width}
-          height={this.props.height}
-          ref={(c) => {
-            this.canvas = c;
-          }
-          }
-          onMouseMove={(e) => this.handleMouseMove(e)}
-        />
+      <canvas
+        width={this.props.width}
+        height={this.props.height}
+        ref={(c) => {
+          this.canvas = c;
+        }}
+        onMouseMove={(e) => this.handleMouseMove(e)}
+      />
     );
   }
 }
 
 Canvas.propTypes = {
-
+  loadCanvas: PropTypes.func,
+  nodes: PropTypes.array,
+  radius: PropTypes.number,
+  selected: PropTypes.number,
+  updateSelected: PropTypes.func,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 export default Canvas;

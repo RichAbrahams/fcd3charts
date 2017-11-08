@@ -12624,7 +12624,7 @@ const data = {
     year: 2015,
     month: 12,
     variance: 0.870,
-  }, ],
+  }],
 };
 
 export default data;

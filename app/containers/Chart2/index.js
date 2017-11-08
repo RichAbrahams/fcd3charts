@@ -39,7 +39,7 @@ export class Chart2 extends React.Component { // eslint-disable-line react/prefe
 }
 
 Chart2.propTypes = {
-
+  toolTip: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

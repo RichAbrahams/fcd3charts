@@ -10,7 +10,6 @@ import {
   SET_CONTEXT1,
   UPDATE_SLIDER,
   MOUSE_MOVE,
-  FILTERED_DATA,
 } from './constants';
 import originalData from '../../data/data3';
 
@@ -31,7 +30,7 @@ const colors = [
   'rgba(253, 174, 97,1)',
   'rgba(244, 109, 67,1)',
   'rgba(213, 62, 79,1)',
-  'rgba(158, 1, 66,1)'
+  'rgba(158, 1, 66,1)',
 ];
 const monthNames = [
   'Jan',
@@ -79,18 +78,16 @@ const xScale = generateXScale();
 const yScale = generateYScale();
 const colorScale = generateColorScale();
 
-const data = originalData.monthlyVariance.map((item) => {
-  return Object.assign({}, item, {
-    monthName: monthNames[item.month - 1],
-    temp: 8.66 + item.variance,
-    x: xScale(item.year) + paddingLeft,
-    y: yScale(monthNames[item.month - 1]) + paddingTop,
-    width: xScale.bandwidth(),
-    height: yScale.bandwidth(),
-    fill: colorScale(item.variance),
-    render: true,
-  });
-});
+const data = originalData.monthlyVariance.map((item) => Object.assign({}, item, {
+  monthName: monthNames[item.month - 1],
+  temp: 8.66 + item.variance,
+  x: xScale(item.year) + paddingLeft,
+  y: yScale(monthNames[item.month - 1]) + paddingTop,
+  width: xScale.bandwidth(),
+  height: yScale.bandwidth(),
+  fill: colorScale(item.variance),
+  render: true,
+}));
 
 const initialState = fromJS({
   data,

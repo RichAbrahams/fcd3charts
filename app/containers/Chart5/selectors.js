@@ -38,10 +38,35 @@ const projection = () => createSelector(
   selectChart5Domain,
   (substate) => substate.get('projection')
 );
+
+const scale = () => createSelector(
+  selectChart5Domain,
+  (substate) => substate.get('scale')
+);
+
+const dragging = () => createSelector(
+  selectChart5Domain,
+  (substate) => substate.get('dragging')
+);
+
+const translateX = () => createSelector(
+  selectChart5Domain,
+  (substate) => substate.get('translateX')
+);
+
+const translateY = () => createSelector(
+  selectChart5Domain,
+  (substate) => substate.get('translateY')
+);
+
 export {
   countries,
   width,
   height,
   meteorites,
   projection,
+  scale,
+  dragging,
+  translateX,
+  translateY,
 };

@@ -15,15 +15,13 @@ function Tooltip(props) {
     (<ul>
       <li>{country}</li>
     </ul>);
-  const content = () => {
-    return (<BubbleOverWrapper
-      style={{ left: nodes[selected].x - 60, top: nodes[selected].y - 105 }}
-    >
-      <BubbleOver>
-        {details()}
-      </BubbleOver>
-    </BubbleOverWrapper>);
-  };
+  const content = () => (<BubbleOverWrapper
+    style={{ left: nodes[selected].x - 60, top: nodes[selected].y - 105 }}
+  >
+    <BubbleOver>
+      {details()}
+    </BubbleOver>
+  </BubbleOverWrapper>);
   return content();
 }
 

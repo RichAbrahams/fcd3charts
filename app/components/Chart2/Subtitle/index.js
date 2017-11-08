@@ -5,11 +5,12 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledText from './StyledText';
 
 
 function Subtitle(props) {
-  const { svgHeight, svgWidth, paddingLeft, paddingRight, paddingBottom, paddingTop } = props;
+  const { svgWidth, paddingTop } = props;
   const top = paddingTop - 50;
   const left = svgWidth / 2;
   const text = '35 Fastest times up Alpe d\u0027Huez';
@@ -21,7 +22,8 @@ function Subtitle(props) {
 }
 
 Subtitle.propTypes = {
-
+  svgWidth: PropTypes.number,
+  paddingTop: PropTypes.number,
 };
 
 export default Subtitle;

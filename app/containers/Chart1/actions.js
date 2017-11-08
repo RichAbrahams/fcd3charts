@@ -106,3 +106,4 @@ export function stopDrawing() {
     type: STOP_DRAWING,
   };
 }
+

@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 class Canvas1 extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -37,7 +37,11 @@ class Canvas1 extends React.Component { // eslint-disable-line react/prefer-stat
 }
 
 Canvas1.propTypes = {
-
+  setCtx1: PropTypes.func,
+  drawChart: PropTypes.func,
+  dragging: PropTypes.bool,
+  canvasWidth: PropTypes.number,
+  canvasHeight: PropTypes.number,
 };
 
 export default Canvas1;

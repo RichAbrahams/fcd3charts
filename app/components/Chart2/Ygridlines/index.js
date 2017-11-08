@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { axisLeft, select } from 'd3';
 
 
@@ -33,7 +34,11 @@ class Ygridlines extends React.Component { // eslint-disable-line react/prefer-s
 }
 
 Ygridlines.propTypes = {
-
+  yScale: PropTypes.func,
+  svgWidth: PropTypes.number,
+  paddingLeft: PropTypes.number,
+  paddingRight: PropTypes.number,
+  paddingTop: PropTypes.number,
 };
 
 export default Ygridlines;

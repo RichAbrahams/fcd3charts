@@ -1,7 +1,6 @@
 import { takeLatest } from 'redux-saga';
-import { fork, call, put, select } from 'redux-saga/effects';
-// import { scaleBand, scaleLinear, axisLeft, select } from 'd3';
-import * as d3 from 'd3';
+import { fork, put, select } from 'redux-saga/effects';
+import { scaleBand, scaleLinear, axisLeft, path, axisBottom, select as d3Select } from 'd3';
 import {
   DRAW_CHART,
   MOUSE_DRAG,
@@ -16,7 +15,7 @@ import { store } from '../../app';
 let draw;
 
 function generateXScale(data, width) {
-  const xScale = d3.scaleBand()
+  const xScale = scaleBand()
     .domain(data.map((item) => item[0]))
     .range([0, width])
     .padding(0.1);
@@ -27,14 +26,14 @@ function generateYScale(data, height) {
   const gdp = data.map((item) => item[1]);
   const max = gdp.reduce((a, b) => Math.max(a, b)) * 1.1;
   const min = gdp.reduce((a, b) => Math.min(a, b)) * 0.9;
-  const yScale = d3.scaleLinear()
+  const yScale = scaleLinear()
     .domain([min, max])
     .range([height, 0]);
   return yScale;
 }
 
 function spline(t, a, b, c, d) {
-  return 0.5 * ((2 * b) + (-a + c) * t + (2 * a - 5 * b + 4 * c - d) * t * t + (-a + 3 * b - 3 * c + d) * t * t * t);
+  return 0.5 * ((2 * b) + (-a + c) * t + (2 * a - 5 * b + 4 * c - d) * t * t + (-a + 3 * b - 3 * c + d) * t * t * t);  // eslint-disable-line no-mixed-operators
 }
 
 function clearCanvas(canvasWidth, canvasHeight, ctx) {
@@ -152,14 +151,14 @@ function calculateDraw(filteredData, canvasWidth, canvasHeight, paddingTop, padd
 }
 
 function betterYAxisLine(canvasHeight, paddingBottom, paddingTop, paddingLeft) {
-  const context = d3.path();
+  const context = path();
   context.moveTo(paddingLeft, canvasHeight - paddingBottom);
   context.lineTo(paddingLeft, paddingTop);
   return context;
 }
 
 function generateYAxis(svg, yScale, paddingLeft, paddingRight, paddingTop, paddingBottom, canvasWidth, canvasHeight) {
-  const yAxis = d3.axisLeft()
+  const yAxis = axisLeft()
   .scale(yScale)
   .tickSize(-(canvasWidth - ((paddingLeft + paddingRight) - 3)))
   .tickPadding(6);
@@ -175,7 +174,7 @@ function generateYAxis(svg, yScale, paddingLeft, paddingRight, paddingTop, paddi
 }
 
 function generateXAxis(svg, xScale, canvasHeight, paddingLeft, paddingBottom) {
-  const xAxis = d3.axisBottom()
+  const xAxis = axisBottom()
   .scale(xScale)
   .tickValues(xScale.domain()
   .filter((d, i) => !(i % (Math.floor(xScale.domain().length / 10)))))
@@ -205,7 +204,7 @@ function drawText(ctx, canvasWidth) {
 }
 
 function drawAxis(svg, xScale, yScale, paddingLeft, paddingRight, paddingTop, paddingBottom, canvasWidth, canvasHeight) {
-  const selectedSvg = d3.select(svg);
+  const selectedSvg = d3Select(svg);
   selectedSvg.selectAll('*').remove();
   generateYAxis(selectedSvg, yScale, paddingLeft, paddingRight, paddingTop, paddingBottom, canvasWidth, canvasHeight);
   generateXAxis(selectedSvg, xScale, canvasHeight, paddingLeft, paddingBottom);

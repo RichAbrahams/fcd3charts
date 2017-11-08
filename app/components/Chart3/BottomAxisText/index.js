@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledText from './StyledText';
 
 
@@ -20,7 +21,11 @@ function BottomAxisText(props) {
 }
 
 BottomAxisText.propTypes = {
-
+  chartHeight: PropTypes.number,
+  chartWidth: PropTypes.number,
+  paddingLeft: PropTypes.number,
+  paddingRight: PropTypes.number,
+  paddingBottom: PropTypes.number,
 };
 
 export default BottomAxisText;

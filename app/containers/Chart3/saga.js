@@ -1,14 +1,12 @@
 import { takeLatest } from 'redux-saga';
-import { fork, call, put, select } from 'redux-saga/effects';
+import { fork, select } from 'redux-saga/effects';
 
 import {
   DRAW_CHART,
   UPDATE_SLIDER,
   STOP_DRAWING,
 } from './constants';
-import * as actions from './actions';
 import * as selectors from './selectors';
-import { store } from '../../app';
 
 let draw;
 
@@ -17,7 +15,7 @@ function clearCanvas(paddingTop, paddingLeft, width, height, ctx) {
   ctx.fillRect(paddingTop, paddingLeft, width, height);
 }
 
-function renderChart(data, chartWidth, chartHeight, paddingTop, paddingBottom, ctx, frame) {
+function renderChart(data, chartWidth, chartHeight, paddingTop, paddingBottom, ctx) {
   for (let i = 0; i < data.size; i += 1) {
     const item = data.get(i);
     if (item.get('render')) {

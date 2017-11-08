@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import Wrapper from './Wrapper';
 
@@ -20,7 +21,7 @@ function Reset(props) {
 }
 
 Reset.propTypes = {
-
+  resetChart: PropTypes.func,
 };
 
 export default Reset;

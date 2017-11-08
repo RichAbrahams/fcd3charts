@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';
 import LeftAxis from '../LeftAxis';
 import BottomAxis from '../BottomAxis';
@@ -49,7 +49,8 @@ class Svg extends React.Component { // eslint-disable-line react/prefer-stateles
 }
 
 Svg.propTypes = {
-
+  svgWidth: PropTypes.number,
+  svgHeight: PropTypes.number,
 };
 
 export default Svg;

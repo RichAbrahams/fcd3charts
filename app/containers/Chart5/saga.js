@@ -1,6 +1,11 @@
-// import { take, call, put, select } from 'redux-saga/effects';
+import { throttle, put } from 'redux-saga/effects';
+import { DEBOUNCED_DRAG } from './constants';
+import * as actions from './actions';
 
-// Individual exports for testing
-export default function* defaultSaga() {
-  // See example in containers/HomePage/saga.js
+function* handleInput({ payload }) {
+  yield put(actions.drag(payload));
+}
+
+export default function* watchInput() {
+  yield throttle(50, DEBOUNCED_DRAG, handleInput);
 }

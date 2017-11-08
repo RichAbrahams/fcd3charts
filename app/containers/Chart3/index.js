@@ -17,6 +17,7 @@ import Canvas1 from 'components/Chart3/Canvas1';
 import Svg from 'components/Chart3/Svg';
 import Slider from 'components/Chart3/Slider';
 import Tooltip from 'components/Chart3/Tooltip';
+
 import ChartWrapper from 'components/ChartWrapper';
 import MainWrapper from 'components/MainWrapper';
 import * as selectors from './selectors';
@@ -29,7 +30,7 @@ export class Chart3 extends React.Component { // eslint-disable-line react/prefe
   componentWillUnmount() {
     this.props.stopDrawing();
   }
-  
+
   render() {
     return (
       <div>
@@ -51,6 +52,8 @@ export class Chart3 extends React.Component { // eslint-disable-line react/prefe
 }
 
 Chart3.propTypes = {
+  stopDrawing: PropTypes.func,
+  toolTip: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({

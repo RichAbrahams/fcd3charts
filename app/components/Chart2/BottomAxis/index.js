@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { axisBottom, select } from 'd3';
+import PropTypes from 'prop-types';
 
 
 class BottomAxis extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -33,7 +34,10 @@ class BottomAxis extends React.Component { // eslint-disable-line react/prefer-s
 }
 
 BottomAxis.propTypes = {
-
+  xScale: PropTypes.func,
+  paddingLeft: PropTypes.number,
+  svgHeight: PropTypes.number,
+  paddingBottom: PropTypes.number,
 };
 
 export default BottomAxis;

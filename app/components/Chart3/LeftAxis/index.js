@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { axisLeft, select } from 'd3';
 
 
@@ -48,7 +49,9 @@ class LeftAxis extends React.Component { // eslint-disable-line react/prefer-sta
 }
 
 LeftAxis.propTypes = {
-
+  yScale: PropTypes.func,
+  paddingLeft: PropTypes.number,
+  paddingTop: PropTypes.number,
 };
 
 export default LeftAxis;
