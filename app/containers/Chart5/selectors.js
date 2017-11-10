@@ -5,44 +5,31 @@ import { createSelector } from 'reselect';
  */
 const selectChart5Domain = (state) => state.get('chart5');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by Chart5
- */
-
-const countries = () => createSelector(
+const selectCanvasWidth = () => createSelector(
   selectChart5Domain,
-  (substate) => substate.get('countries').toJS()
+  (substate) => substate.get('canvasWidth')
 );
 
-const width = () => createSelector(
+const selectCanvasHeight = () => createSelector(
   selectChart5Domain,
-  (substate) => substate.get('width')
+  (substate) => substate.get('canvasHeight')
 );
 
-const height = () => createSelector(
+const selectInitialScale = () => createSelector(
   selectChart5Domain,
-  (substate) => substate.get('height')
+  (substate) => substate.get('initialScale')
 );
 
-const meteorites = () => createSelector(
+const selectScaleModifier = () => createSelector(
   selectChart5Domain,
-  (substate) => substate.get('meteorites').get('features').toJS()
+  (substate) => substate.get('scaleModifier')
 );
 
-const projection = () => createSelector(
+const selectCtx1 = () => createSelector(
   selectChart5Domain,
-  (substate) => substate.get('projection')
+  (substate) => substate.get('ctx1')
 );
 
-const scale = () => createSelector(
-  selectChart5Domain,
-  (substate) => substate.get('scale')
-);
 
 const dragging = () => createSelector(
   selectChart5Domain,
@@ -59,20 +46,13 @@ const translateY = () => createSelector(
   (substate) => substate.get('translateY')
 );
 
-const radialScale = () => createSelector(
-  selectChart5Domain,
-(substate) => substate.get('radialScale')
-);
-
 export {
-  countries,
-  width,
-  height,
-  meteorites,
-  projection,
-  scale,
+  selectCanvasWidth,
+  selectCanvasHeight,
+  selectCtx1,
+  selectInitialScale,
+  selectScaleModifier,
   dragging,
   translateX,
   translateY,
-  radialScale,
 };

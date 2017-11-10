@@ -21,23 +21,30 @@ class Strikes extends React.Component { // eslint-disable-line react/prefer-stat
     return true;
   }
 
-  buildStrikes() {
-    const { meteorites, width, height, radialScale } = this.props;
-    const location = (strike) => projection(width, height)(strike.geometry.coordinates);
-    const strikes = meteorites.map((item) => {
-      if (item.geometry === null) {
-        return null;
-      }
-      return (<Circle
-        cx={location(item)[0]}
-        cy={location(item)[1]}
-        r={radialScale(item.properties.mass)}
-        fill="rgba(233, 30, 99, 0.5)"
-        stroke="rgba(68,68,68, 0.5)"
-        stroke-width="1"
-        key={shortID.generate()}
-      />);
+  handleUpdateTooltip(e, strike, show) {
+    const x = show ? e.nativeEvent.offsetX : null;
+    const y = show ? e.nativeEvent.offsetY : null;
+    const index = show ? strike : null;
+    this.props.updateTooltip({
+      x,
+      y,
+      index,
     });
+  }
+
+  buildStrikes() {
+    const { meteorites, scale, updateTooltip } = this.props;
+    const strikes = meteorites.map((item, index) => (<Circle
+      cx={item.cx}
+      cy={item.cy}
+      r={item.radius}
+      fill="rgba(233, 30, 99, 0.5)"
+      stroke="rgba(68,68,68, 0.5)"
+      stroke-width="1"
+      key={shortID.generate()}
+      onMouseEnter={(e) => this.handleUpdateTooltip(e, index, true)}
+      onMouseLeave={(e) => this.handleUpdateTooltip(e, index, false)}
+    />));
     return strikes;
   }
 

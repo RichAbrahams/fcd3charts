@@ -7,7 +7,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledWrapper from './StyledWrapper';
-import Canvas1 from '../Canvas1';
+import Svg from '../Svg';
+import Paths from '../Paths';
+import Strikes from '../Strikes';
 
 class Wrapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -47,6 +49,11 @@ class Wrapper extends React.Component { // eslint-disable-line react/prefer-stat
     }
   }
 
+  handleDrag(e) {
+    e.preventDefault();
+    console.log('dragging');
+  }
+
   render() {
     return (
       <StyledWrapper
@@ -56,9 +63,14 @@ class Wrapper extends React.Component { // eslint-disable-line react/prefer-stat
         onMouseUp={(e) => this.handleMouseUp(e)}
         onMouseMove={(e) => this.handleMouseMove(e)}
         onMouseLeave={(e) => this.handleMouseOut(e)}
+        onDrag={(e) => this.handleDrag(e)}
         dragging={this.props.dragging}
+        draggable="true"
       >
-        <Canvas1 {...this.props} />
+        <Svg {...this.props}>
+          <Paths {...this.props} />
+          <Strikes {...this.props} />
+        </Svg>
       </StyledWrapper>
     );
   }

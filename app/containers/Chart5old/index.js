@@ -5,21 +5,20 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import Canvas1 from 'components/Chart5/Canvas1';
+import Wrapper from 'components/Chart5/Wrapper';
 import ChartWrapper from 'components/ChartWrapper';
 import MainWrapper from 'components/MainWrapper';
-import Wrapper from 'components/Chart5/Wrapper';
+import Tooltip from 'components/Chart5/Tooltip';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import * as selectors from './selectors';
+import * as actions from './actions';
 import reducer from './reducer';
 import saga from './saga';
-import * as actions from './actions';
-import * as selectors from './selectors';
 
 export class Chart5 extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -30,32 +29,36 @@ export class Chart5 extends React.Component { // eslint-disable-line react/prefe
           <meta name="description" content="Description of Chart5" />
         </Helmet>
         <MainWrapper>
-          <ChartWrapper {...this.props}>
+          <ChartWrapper>
             <Wrapper {...this.props} />
+            {this.props.tooltip.index !== null && <Tooltip {...this.props} />}
           </ChartWrapper>
         </MainWrapper>
-
       </div>
     );
   }
 }
 
-Chart5.propTypes = {
-};
-
 const mapStateToProps = createStructuredSelector({
-  canvasWidth: selectors.selectCanvasWidth(),
-  canvasHeight: selectors.selectCanvasHeight(),
+  countries: selectors.countries(),
+  width: selectors.width(),
+  height: selectors.height(),
+  meteorites: selectors.meteorites(),
+  projection: selectors.projection(),
+  scale: selectors.scale(),
   dragging: selectors.dragging(),
+  translateX: selectors.translateX(),
+  translateY: selectors.translateY(),
+  radialScale: selectors.radialScale(),
+  tooltip: selectors.tooltip(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    initialize: (c) => dispatch(actions.initialize(c)),
-    drawChart: () => dispatch(actions.drawChart()),
     adjustScale: (payload) => dispatch(actions.adjustScale(payload)),
     toggleDragging: (payload) => dispatch(actions.toggleDragging(payload)),
     drag: (payload) => dispatch(actions.drag(payload)),
+    updateTooltip: (payload) => dispatch(actions.updateTooltip(payload)),
   };
 }
 

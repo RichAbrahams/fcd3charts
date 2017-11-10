@@ -19,7 +19,7 @@ class Svg extends React.Component { // eslint-disable-line react/prefer-stateles
       <StyledSvg
         width={width}
         height={height}
-        viewBox={`0 0 ${this.props.width} ${this.props.height}`}
+        viewBox={`0 0 ${width} ${height}`}
         fill="#4169E1"
         style={styling}
       >

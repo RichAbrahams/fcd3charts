@@ -5,11 +5,25 @@
  */
 
 import {
+  DRAW_CHART,
+  INITIALIZE,
   ADJUST_SCALE,
   TOGGLE_DRAGGING,
   DRAG,
-  DEBOUNCED_DRAG,
 } from './constants';
+
+export function initialize(payload) {
+  return {
+    type: INITIALIZE,
+    payload,
+  };
+}
+
+export function drawChart() {
+  return {
+    type: DRAW_CHART,
+  };
+}
 
 export function adjustScale(payload) {
   return {
@@ -21,13 +35,6 @@ export function adjustScale(payload) {
 export function toggleDragging(payload) {
   return {
     type: TOGGLE_DRAGGING,
-    payload,
-  };
-}
-
-export function debouncedDrag(payload) {
-  return {
-    type: DEBOUNCED_DRAG,
     payload,
   };
 }
