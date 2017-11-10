@@ -10,6 +10,8 @@ import {
   ADJUST_SCALE,
   TOGGLE_DRAGGING,
   DRAG,
+  REPLACE_METEORS,
+  UPDATE_SELECTED
 } from './constants';
 
 export function initialize(payload) {
@@ -42,6 +44,20 @@ export function toggleDragging(payload) {
 export function drag(payload) {
   return {
     type: DRAG,
+    payload,
+  };
+}
+
+export function replaceMeteors(payload) {
+  return {
+    type: REPLACE_METEORS,
+    payload,
+  };
+}
+
+export function updateSelected(payload) {
+  return {
+    type: UPDATE_SELECTED,
     payload,
   };
 }

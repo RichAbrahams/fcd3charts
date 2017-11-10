@@ -5,17 +5,21 @@
  */
 
 import { fromJS } from 'immutable';
+import { scaleLinear } from 'd3';
 import {
   INITIALIZE,
   ADJUST_SCALE,
   TOGGLE_DRAGGING,
   DRAG,
+  REPLACE_METEORS,
+  UPDATE_SELECTED
 } from './constants';
+import data from '../../data/data5/meteorite-strike-data.json';
 
 const initialState = fromJS({
   ctx1: null,
   canvasWidth: 1000,
-  canvasHeight: 1000,
+  canvasHeight: 700,
   initialScale: 159,
   scaleModifier: 1,
   translateX: 0,
@@ -25,6 +29,8 @@ const initialState = fromJS({
   dragStartY: null,
   dragStartTranslateX: null,
   dragStartTranslateY: null,
+  meteors: null,
+  selected: null,
 });
 
 function chart5Reducer(state = initialState, action) {
@@ -37,7 +43,7 @@ function chart5Reducer(state = initialState, action) {
       const translateY = state.get('translateY');
       const scalechange = action.payload <= 0 ? 1.25 : 0.8;
       const newScaleModifier = oldScaleModifier * scalechange;
-      if (newScaleModifier > 0.8 && newScaleModifier < 10) {
+      if (newScaleModifier > 0.8 && newScaleModifier < 50) {
         const newTranslateX = translateX * scalechange;
         const newTranslateY = translateY * scalechange;
         return state.merge({
@@ -84,6 +90,12 @@ function chart5Reducer(state = initialState, action) {
       newTranslateX = Math.clamp(newTranslateX, -maxX, maxX);
       newTranslateY = Math.clamp(newTranslateY, -maxY, maxY);
       return state.merge({ translateX: newTranslateX, translateY: newTranslateY });
+    }
+    case REPLACE_METEORS: {
+      return state.set('meteors', action.payload);
+    }
+    case UPDATE_SELECTED: {
+      return state.set('selected', action.payload);
     }
     default:
       return state;

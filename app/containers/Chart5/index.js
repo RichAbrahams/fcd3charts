@@ -14,6 +14,7 @@ import Canvas1 from 'components/Chart5/Canvas1';
 import ChartWrapper from 'components/ChartWrapper';
 import MainWrapper from 'components/MainWrapper';
 import Wrapper from 'components/Chart5/Wrapper';
+import Tooltip from 'components/Chart5/Tooltip';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
@@ -32,6 +33,7 @@ export class Chart5 extends React.Component { // eslint-disable-line react/prefe
         <MainWrapper>
           <ChartWrapper {...this.props}>
             <Wrapper {...this.props} />
+            {this.props.selected && <Tooltip {...this.props} />}
           </ChartWrapper>
         </MainWrapper>
 
@@ -47,6 +49,8 @@ const mapStateToProps = createStructuredSelector({
   canvasWidth: selectors.selectCanvasWidth(),
   canvasHeight: selectors.selectCanvasHeight(),
   dragging: selectors.dragging(),
+  meteors: selectors.meteors(),
+  selected: selectors.selected(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -56,6 +60,7 @@ function mapDispatchToProps(dispatch) {
     adjustScale: (payload) => dispatch(actions.adjustScale(payload)),
     toggleDragging: (payload) => dispatch(actions.toggleDragging(payload)),
     drag: (payload) => dispatch(actions.drag(payload)),
+    updateSelected: (payload) => dispatch(actions.updateSelected(payload)),
   };
 }
 

@@ -46,6 +46,16 @@ const translateY = () => createSelector(
   (substate) => substate.get('translateY')
 );
 
+const meteors = () => createSelector(
+  selectChart5Domain,
+  (substate) => substate.get('meteors')
+);
+
+const selected = () => createSelector(
+  selectChart5Domain,
+  (substate) => substate.get('selected')
+);
+
 export {
   selectCanvasWidth,
   selectCanvasHeight,
@@ -55,4 +65,6 @@ export {
   dragging,
   translateX,
   translateY,
+  meteors,
+  selected,
 };

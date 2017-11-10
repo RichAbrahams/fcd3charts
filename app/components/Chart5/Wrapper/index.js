@@ -33,11 +33,21 @@ class Wrapper extends React.Component { // eslint-disable-line react/prefer-stat
 
   handleMouseMove(e) {
     e.preventDefault();
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
     if (this.props.dragging) {
-      const x = e.nativeEvent.offsetX;
-      const y = e.nativeEvent.offsetY;
-      this.props.drag([x, y]);
+      return this.props.drag([x, y]);
     }
+    const selected = this.props.meteors.find((item) => {
+      const vx = x - item.x;
+      const vy = y - item.y;
+      const mag = Math.sqrt((vx * vx) + (vy * vy));
+      return mag < item.radius;
+    });
+    if (selected) {
+      return this.props.updateSelected(selected);
+    }
+    return this.props.updateSelected(null);
   }
 
   handleMouseOut(e) {
