@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledWrapper from './StyledWrapper';
+import Title from './Title';
 import Canvas1 from '../Canvas1';
 
 class Wrapper extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -68,6 +69,7 @@ class Wrapper extends React.Component { // eslint-disable-line react/prefer-stat
         onMouseLeave={(e) => this.handleMouseOut(e)}
         dragging={this.props.dragging}
       >
+        <Title>Recorded meteoroid impacts 861 - 2013 CE</Title>
         <Canvas1 {...this.props} />
       </StyledWrapper>
     );
@@ -79,6 +81,8 @@ Wrapper.propTypes = {
   drag: PropTypes.func,
   toggleDragging: PropTypes.func,
   adjustScale: PropTypes.func,
+  meteors: PropTypes.array,
+  updateSelected: PropTypes.func,
 };
 
 export default Wrapper;

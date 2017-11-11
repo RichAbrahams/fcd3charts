@@ -2,7 +2,6 @@ import { takeLatest } from 'redux-saga';
 import { fork, put, select } from 'redux-saga/effects';
 import { geoMercator, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import { scaleLinear } from 'd3';
 import { INITIALIZE, ADJUST_SCALE, DRAG } from './constants';
 import * as selectors from './selectors';
 import topoMap from '../../data/data5/world-countries-sans-antarctica.json';
@@ -18,16 +17,24 @@ let scaleModifier;
 let translateX;
 let translateY;
 
-const extractedData = data.features.map((item) => item).filter((item) => item.geometry !== null);
+const extractedData = data.features.map((item) => item)
+  .filter((item) => item.geometry !== null && item.properties.mass !== null)
+  .sort((a, b) => a.properties.mass - b.properties.mass);
 
-const mass = extractedData.map((item) => parseInt(item.properties.mass, 10))
-.filter((item) => !isNaN(item));
-
-const max = Math.max(...mass);
-const min = Math.min(...mass);
-const radialScale = scaleLinear()
-  .domain([min, max])
-  .range([3, 30]);
+const calcRadius = (input) => {
+  if (input < 100) {
+    return [3, 'rgba(251, 247, 28, 0.6)'];
+  } else if (input < 100) {
+    return [5, 'rgba(117, 251, 28, 0.6)'];
+  } else if (input < 10000) {
+    return [8, 'rgba(28, 247, 251, 0.6)'];
+  } else if (input < 100000) {
+    return [10, 'rgba(28, 99, 251, 0.6)'];
+  } else if (input < 1000000) {
+    return [15, 'rgba(106, 28, 251, 0.6)'];
+  }
+  return [20, 'rgba(251, 28, 32, 0.6)'];
+};
 
 function clearCanvas() {
   ctx.fillStyle = 'white';
@@ -49,13 +56,14 @@ function* draw() {
     ctx.stroke();
     ctx.fill();
   });
-  ctx.fillStyle = 'rgba(247, 43, 43, 0.54)';
+
   const meteors = extractedData.map((meteor) => {
     const [x, y] = projection(width, height)(meteor.geometry.coordinates);
-    const radius = radialScale(meteor.properties.mass);
-    return Object.assign({}, meteor, { x, y, radius });
+    const size = calcRadius(meteor.properties.mass);
+    return Object.assign({}, meteor, { x, y, radius: size[0], color: size[1] });
   });
   meteors.forEach((meteor) => {
+    ctx.fillStyle = meteor.color;
     ctx.beginPath();
     ctx.arc(meteor.x, meteor.y, meteor.radius, 0, 2 * Math.PI);
     ctx.fill();

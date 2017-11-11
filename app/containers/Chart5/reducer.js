@@ -5,16 +5,14 @@
  */
 
 import { fromJS } from 'immutable';
-import { scaleLinear } from 'd3';
 import {
   INITIALIZE,
   ADJUST_SCALE,
   TOGGLE_DRAGGING,
   DRAG,
   REPLACE_METEORS,
-  UPDATE_SELECTED
+  UPDATE_SELECTED,
 } from './constants';
-import data from '../../data/data5/meteorite-strike-data.json';
 
 const initialState = fromJS({
   ctx1: null,

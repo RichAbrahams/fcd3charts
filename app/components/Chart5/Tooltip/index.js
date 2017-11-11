@@ -39,27 +39,3 @@ Tooltip.propTypes = {
 
 export default Tooltip;
 
-// id
-// :
-// "5051"
-// mass
-// :
-// "488.1"
-// name
-// :
-// "Binningup"
-// nametype
-// :
-// "Valid"
-// recclass
-// :
-// "H5"
-// reclat
-// :
-// "-33.156390"
-// reclong
-// :
-// "115.676390"
-// year
-// :
-// "1984-01-01T00:00:00.000"

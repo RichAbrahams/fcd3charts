@@ -11,7 +11,7 @@ import {
   TOGGLE_DRAGGING,
   DRAG,
   REPLACE_METEORS,
-  UPDATE_SELECTED
+  UPDATE_SELECTED,
 } from './constants';
 
 export function initialize(payload) {

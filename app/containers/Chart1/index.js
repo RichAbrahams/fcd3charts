@@ -16,7 +16,7 @@ import Svg from 'components/Chart1/Svg';
 import ChartWrapper from 'components/ChartWrapper';
 import MainWrapper from 'components/MainWrapper';
 import Reset from 'components/Chart1/Reset';
-
+import Loading from 'components/Loading';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
@@ -83,3 +83,11 @@ export default compose(
   withSaga,
   withConnect,
 )(Chart1);
+{/* <MainWrapper>
+<ChartWrapper {...this.props}>
+  <Reset {...this.props} />
+  <Svg {...this.props} />
+  <Canvas1 {...this.props} />
+  <Canvas2 {...this.props} />
+</ChartWrapper>
+</MainWrapper> */}
