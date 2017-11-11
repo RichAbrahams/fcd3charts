@@ -18,8 +18,8 @@ const amendedData = pristineData.map((item) => {
   return Object.assign({}, item, { timeBehindFastest });
 });
 
-const svgWidth = window.innerWidth * 0.7;
-const svgHeight = ((window.innerWidth * 0.7) / 16) * 9;
+const svgWidth = 1000;
+const svgHeight = 562;
 const paddingTop = 100;
 const paddingLeft = 100;
 const paddingBottom = 100;

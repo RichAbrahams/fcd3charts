@@ -12,7 +12,6 @@ class Canvas1 extends React.Component { // eslint-disable-line react/prefer-stat
     const ctx = this.canvas.getContext('2d');
     ctx.imageSmoothingEnabled = true;
     this.props.setCtx1(ctx);
-    this.props.drawChart();
   }
 
   shouldComponentUpdate(nextProps) {

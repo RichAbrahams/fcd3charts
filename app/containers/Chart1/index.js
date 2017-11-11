@@ -26,11 +26,6 @@ import * as selectors from './selectors';
 
 export class Chart1 extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  componentWillUnmount() {
-    this.props.resetChart();
-    this.props.stopDrawing();
-  }
-
   render() {
     return (
       <div>
@@ -60,12 +55,14 @@ const mapStateToProps = createStructuredSelector({
   canvasHeight: selectors.selectCanvasHeight(),
   dragging: selectors.selectDragging(),
   fullDataSet: selectors.selectFullDataSet(),
+  ctx1: selectors.selectCtx1(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     setCtx1: (c) => dispatch(actions.setContext1(c)),
     setCtx2: (c) => dispatch(actions.setContext2(c)),
+    initialize: () => dispatch(actions.initialize()),
     setSvg: (s) => dispatch(actions.setSvg(s)),
     drawChart: () => dispatch(actions.drawChart()),
     mouseDown: (payload) => dispatch(actions.mouseDown(payload)),
@@ -73,7 +70,6 @@ function mapDispatchToProps(dispatch) {
     mouseDrag: (payload) => dispatch(actions.mouseDrag(payload)),
     mouseMove: (payload) => dispatch(actions.mouseMove(payload)),
     resetChart: () => dispatch(actions.resetChart()),
-    stopDrawing: () => dispatch(actions.stopDrawing()),
   };
 }
 

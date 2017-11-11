@@ -7,6 +7,7 @@
 import {
   SET_CONTEXT1,
   SET_CONTEXT2,
+  INITIALIZE,
   DRAW_CHART,
   MOUSE_DOWN,
   MOUSE_UP,
@@ -38,6 +39,12 @@ export function setSvg(payload) {
   return {
     type: SET_SVG,
     payload,
+  };
+}
+
+export function initialize() {
+  return {
+    type: INITIALIZE,
   };
 }
 
@@ -98,12 +105,6 @@ export function resetDrag() {
 export function resetChart() {
   return {
     type: RESET_CHART,
-  };
-}
-
-export function stopDrawing() {
-  return {
-    type: STOP_DRAWING,
   };
 }
 

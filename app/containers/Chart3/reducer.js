@@ -13,8 +13,8 @@ import {
 } from './constants';
 import originalData from '../../data/data3';
 
-const chartWidth = 1280;
-const chartHeight = 800;
+const chartWidth = 1000;
+const chartHeight = 562;
 const paddingTop = 100;
 const paddingLeft = 100;
 const paddingBottom = 100;

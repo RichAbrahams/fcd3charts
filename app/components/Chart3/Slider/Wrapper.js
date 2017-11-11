@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   padding-top: 0.75em;
   box-sizing: border-box;
   left: 0;
-  top: 0;
+  bottom: 5px;
 `;
 
 export default Wrapper;

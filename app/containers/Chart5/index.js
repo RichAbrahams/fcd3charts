@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import Canvas1 from 'components/Chart5/Canvas1';
 import ChartWrapper from 'components/ChartWrapper';
 import MainWrapper from 'components/MainWrapper';
 import Wrapper from 'components/Chart5/Wrapper';

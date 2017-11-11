@@ -12,6 +12,7 @@ class Canvas2 extends React.Component { // eslint-disable-line react/prefer-stat
     const ctx = this.canvas.getContext('2d');
     ctx.imageSmoothingEnabled = true;
     this.props.setCtx2(ctx);
+    this.props.initialize();
   }
 
   handleMouseMove(e) {

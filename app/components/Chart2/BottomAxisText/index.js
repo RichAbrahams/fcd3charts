@@ -11,10 +11,10 @@ import StyledText from './StyledText';
 
 function BottomAxisText(props) {
   const { svgHeight, svgWidth, paddingLeft, paddingRight, paddingBottom } = props;
-  const top = svgHeight - (paddingBottom - 30);
+  const top = svgHeight - (paddingBottom - 60);
   const left = paddingLeft + ((svgWidth - (paddingLeft + paddingRight)) / 2);
   return (
-    <StyledText transform={`translate(${top}, ${left})`}>
+    <StyledText transform={`translate(${left}, ${top})`}>
     Seconds behind fastest time
     </StyledText>
   );
