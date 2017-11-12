@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 
-const UL = styled.ul`
+const LI = styled.li`
+  height: 100%;
   display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-
-  & li {
-    margin: 0em 2em 0em 1em
+  align-items: center;
+  justify-content: center;
+  & :hover {
+    background-color: white;
+    color: black;
   }
 
   & a {
     color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
   }
 
   & a:link {
@@ -31,4 +36,4 @@ const UL = styled.ul`
   }
 `;
 
-export default UL;
+export default LI;

@@ -22,6 +22,7 @@ import Chart3 from 'containers/Chart3/Loadable';
 import Chart4 from 'containers/Chart4/Loadable';
 import Chart5 from 'containers/Chart5/Loadable';
 import NavBar from 'containers/NavBar';
+import Footer from 'components/Footer';
 import Wrapper from './Wrapper';
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/chart5" component={Chart5} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
     </Wrapper>
   );
 }
